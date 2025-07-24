@@ -1,0 +1,12 @@
+{
+  "name": "mewfit",
+  "version": "1.0.0",
+  "description": "**Mewfit** is a cat-themed fitness app that gamifies your workouts. Stay active, achieve your fitness goals, and keep your virtual cat happy! Perfect for cat lovers and fitness enthusiasts alike.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,741 @@
+:root {
+    --background-color: #ffffff;
+    --card-background: #ffffff;
+    --navbar-more-background: #353535;
+    --miniprofile-background: #ffffff;
+    --miniprofile-gmail-text: #666;
+    --settings-change-profile-text: #666;
+    --text-color: #000000;
+    --primary-color: #FFAD84;
+    --secondary-color: #999;
+    --border-color: #c7c7cc;
+    --borderline-color-light: #ddd;
+    --borderline-color-dark: #666666;
+    --box-shadow-light: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --box-shadow-dark: 0 2px 4px rgba(255, 255, 255, 0.1);
+    --transition-speed: 0.3s;
+}
+
+
+html.dark-mode {
+    --background-color: #353536;
+    --card-background: #353536;
+    --miniprofile-background: #474747;
+    --miniprofile-gmail-text: #999;
+    --settings-change-profile-text: #bbbbbb;
+    --text-color: #f2f2f7;
+    --border-color: #38383a;
+}
+
+.navbar {
+    padding: 1rem 2rem;
+    background: var(--background-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+    margin: 0 auto;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+nav-links.html.dark-mode {
+    background: var(--background-color);
+}
+
+.nav-links-indicator {
+    position: absolute;
+    bottom: 5px;
+    height: 3px;
+    background-color: #FFA07A;
+    transition: width 0.3s ease, transform 0.3s ease, height 0.3s ease;
+}
+
+.nav-links a {
+    padding: 5px 15px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+/* Style for the active/current page */
+.nav-links a:hover {
+    color: white;
+}
+
+
+/* About navigation bar but need copy to your page */
+/* .nav-links a {
+    text-decoration: none;
+    color: black;
+} */
+
+.nav-logo {
+    width: 40px;
+    height: 40px;
+    z-index: 5;
+}
+
+.nav-logo-responsive {
+    width: 40px;
+    height: 40px;
+    display: none;
+}
+
+
+.navbar-main {
+    display: flex;
+}
+
+/* Navigation bar selection (need to change based on your page) */
+/* .workout-home,
+.workout-dietplan,
+.workout-settings {
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.workout-navbar a {
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 20px;
+    font-size: 15px;
+    border-radius: 68px;
+    background-color: #FFAD84;
+    color: white;
+    cursor: pointer;
+} */
+
+
+/*pop up container*/
+.animated-popup {
+    position: fixed;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-color);
+    box-shadow: var(--box-shadow-light);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 12px;
+    z-index: 1000;
+    transition: top 0.3s ease-out, opacity 0.3s ease-out;
+    opacity: 0;
+}
+
+animated-popup.html.dark-mode {
+    background-color: var(--background-color);
+}
+
+/*mini profile*/
+.profile img {
+    height: 50px;
+    margin-top: 4px;
+}
+
+.profile {
+    position: relative;
+    margin-left: auto;
+    z-index: 2;
+}
+
+#profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.profile-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    margin-top: 15px;
+    right: 0;
+    background-color: var(--miniprofile-background);
+    border-radius: 9px;
+    padding: 15px 20px 20px 20px;
+    box-shadow: var(--box-shadow-light);
+    color: var(--text-color);
+    z-index: 1000;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    transform: translateY(-10px);
+    font-size: 13px;
+    border: 1px solid var(--border-color);
+}
+
+html.dark-mode .profile-dropdown {
+    box-shadow: var(--box-shadow-dark);
+    border: 1px solid var(--borderline-color-dark);
+}
+
+.profile-dropdown.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding: 5px 60px 15px 0;
+    margin: 0 0 10px 0;
+}
+
+html.dark-mode .profile-info {
+    border-bottom: 1px solid var(--borderline-color-dark);
+}
+
+.profile-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 16px;
+    margin-left: 6px;
+}
+
+.profile-info h3 {
+    margin: 0;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.profile-info p {
+    margin: 0;
+    font-size: 12px;
+    color: var(--miniprofile-gmail-text)
+}
+
+.profile-dropdown ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.profile-dropdown li {
+    padding: 8px 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.profile-dropdown li i {
+    margin-right: 8px;
+    width: 20px;
+}
+
+.settings-profile {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.logout-profile {
+    color: rgb(250, 70, 70);
+}
+
+.logout-profile:hover {
+    color: rgb(253, 39, 39);
+    transition: color 0.3s ease;
+}
+
+.help-center-profile {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    margin-left: auto;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked+.slider {
+    background-color: #FFAD84;
+}
+
+input:checked+.slider:before {
+    transform: translateX(20px);
+}
+
+/* Pop up container */
+.popup-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: all 0.3s;
+}
+
+.popup-container.active {
+    display: flex;
+}
+
+.popup-workout-pic {
+    width: 50%;
+    height: 100%;
+    border-radius: 16px 0 0 16px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000000;
+    transition: all 0.3s;
+}
+
+#popup-workout-image {
+    width: 100%;
+    height: 100%;
+    max-height: 600px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.seperate-workout-pic-details {
+    display: flex;
+    max-height: 600px;
+    height: 100%;
+    width: 100%;
+}
+
+#popup-body {
+    width: 50%;
+    padding: 2rem 2rem 2rem 0;
+    transition: all 0.3s;
+}
+
+.popup-workout-pic::before {
+    content: "No Image Available";
+    color: white;
+    display: none;
+    position: absolute;
+}
+
+.popup-workout-pic:empty::before {
+    display: block;
+}
+
+.gradient-white {
+    position: relative;
+    left: -28px;
+    width: 30px;
+    max-height: 600px;
+    height: 100%;
+    background: linear-gradient(to left, white, transparent);
+    pointer-events: none;
+    z-index: 100;
+    transition: all 0.3s;
+}
+
+html.dark-mode .gradient-white {
+    background: linear-gradient(to left, #393939, transparent);
+}
+
+.popup-content {
+    background: var(--card-background);
+    padding: 0rem;
+    border-radius: 16px;
+    max-width: 1000px;
+    max-height: 600px;
+    width: 100%;
+    height: 100%;
+    box-shadow: var(--box-shadow-light);
+    position: relative;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.popup-close {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--text-color);
+}
+
+.popup-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    margin-top: 2rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+.popup-content p {
+    position: relative;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+    color: var(--text-color);
+}
+
+html.dark-mode .popup-content h2 {
+    color: white;
+}
+
+.popup-stats {
+    display: flex;
+    position: relative;
+    top: 10px;
+    justify-content: center;
+    gap: 2.4rem;
+    margin-bottom: 2rem;
+}
+
+.popup-stat-item {
+    text-align: center;
+}
+
+.popup-stat-value {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.popup-stat-label {
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+    margin-top: 0.5rem;
+}
+
+.popup-start-button {
+    width: 100%;
+    position: relative;
+    top: 5px;
+    padding: 0.9rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.popup-start-button:hover {
+    background: #ff9b6a;
+}
+
+
+/* Logout Modal Styles */
+.logout-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.logout-modal-content {
+    background-color: var(--card-background);
+    padding: 20px;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 5px;
+    text-align: center;
+    color: var(--text-color);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+}
+
+html.dark-mode .logout-modal-content {
+    background-color: var(--card-background);
+    color: var(--text-color);
+}
+
+.logout-modal-content h2 {
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.logout-modal-content p {
+    margin-bottom: 20px;
+}
+
+.logout-modal-content button {
+    margin: 10px 0 20px 0;
+    padding: 13px 25px;
+    margin: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.logout-modal-content button#confirm-logout {
+    background-color: #FFAD84;
+    color: white;
+}
+
+.logout-modal-content button#confirm-logout:hover {
+    background-color: #e19874;
+}
+
+.logout-modal-content button#cancel-logout {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.logout-modal-content button#cancel-logout:hover {
+    background-color: #e0e0e0;
+}
+
+html.dark-mode .logout-modal-content button#cancel-logout {
+    background-color: #4a4a4a;
+    color: #f0f0f0;
+}
+
+html.dark-mode .logout-modal-content button#cancel-logout:hover {
+    background-color: #5a5a5a;
+}
+
+/* .popup-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 400px;
+    width: 100%;
+} */
+
+.animated-popup {
+    position: fixed;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-color);
+    box-shadow: var(--box-shadow-light);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 12px;
+    z-index: 1000;
+    transition: top 0.3s ease-out, opacity 0.3s ease-out;
+    opacity: 0;
+}
+
+/* hamburger menu*/
+#hamburger-menu {
+    display: none;
+    /* Hide by default */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-top: 3px;
+}
+
+#hamburger-menu span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-color);
+    margin: 5px 0;
+    transition: 0.4s;
+}
+
+@media screen and (max-width: 832px) {
+    .navbar {
+        flex-wrap: wrap;
+        padding: 1rem 2rem;
+    }
+
+    #hamburger-menu {
+        display: block;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 50px;
+        background: var(--background-color);
+        padding: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-in-out, opacity 0.3s ease-out;
+        opacity: 0;
+        visibility: hidden;
+        margin-top: 10px;
+        z-index: 11;
+        padding-top: 70px !important;
+    }
+
+    .nav-links.show {
+        opacity: 1;
+        visibility: visible;
+        margin-top: 20px 0;
+        padding-top: 100px;
+    }
+
+    .nav-links a {
+        padding: 12px 20px !important;
+        width: 100%;
+        text-align: center;
+        font-size: 16px;
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+    }
+
+    .nav-links.show a {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.2s;
+        z-index: 1002;
+        transition: all 0.1s ease;
+        transition: color 0.3s ease;
+    }
+
+    .nav-links-indicator {
+        position: relative;
+        background-color: #FFA07A;
+        left: 0;
+        bottom: 355px;
+        height: 40px;
+        opacity: 1;
+        z-index: 1001;
+    }
+
+    .nav-logo {
+        display: none;
+    }
+
+    .nav-logo-responsive {
+        display: block;
+        margin-left: 39%;
+    }
+
+    .profile {
+        display: flex;
+    }
+
+    #profile-pic {
+        margin-right: 5px;
+    }
+
+    .profile-info img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+
+    .profile-dropdown {
+        margin-right: -1px;
+    }
+
+    .header-right {
+        display: flex;
+        align-items: center;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .shown {
+        display: block;
+    }
+
+    #hamburger-menu {
+        display: block;
+        margin-top: 3px;
+        margin-left: 10px;
+    }
+
+    #hamburger-menu span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background-color: var(--text-color);
+        margin: 5px 0;
+        transition: 0.4s;
+    }
+
+    /* Hamburger menu animation */
+    #hamburger-menu span {
+        transition: all 0.3s ease-in-out;
+    }
+
+    #hamburger-menu.active span:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    #hamburger-menu.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    #hamburger-menu.active span:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+}
